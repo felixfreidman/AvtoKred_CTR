@@ -1,12 +1,129 @@
-.container-full {
-    max-width: 1920px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+body {
+    font-family: 'Montserrat';
+    font-weight: 600;
+    color: $darkBlue;
+    cursor: default;
 }
-.container {
-    max-width: 1440px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.main-area {
+    position: relative;
+    height: 100%;
+    &--red {
+        width: 25%;
+        background-color: $blue;
+    }
+    &--gray {
+        width: calc(75% - 150px);
+        height: calc(100% - 200px);
+        padding: 100px 50px 100px 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        background-color: $lightGray;
+    }
+    &__header {
+        font-size: 53px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        line-height: 58px;
+        span {
+            color: $blue;
+        }
+    }
+    &__car-container {
+        width: 100%;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .car-container__card {
+            position: relative;
+            padding: 20px;
+            width: calc(32% - 40px);
+            height: calc(100% - 40px);
+            background-position: 100% 50%;
+            border-radius: 22px;
+            transition: all 0.3s ease;
+            .card-container {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                .card-header {
+                    font-size: 18px;
+                    font-weight: 700;
+                    color: #8d8c8c;
+                }
+                .card-subheader {
+                    margin-top: 5px;
+                    font-size: 12px;
+                    font-weight: 500;
+                    color: #8d8c8c;
+                }
+                .card-table {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+                    justify-content: space-between;
+                    width: 60%;
+                    margin-top: 20px;
+                }
+                .table-row {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    .table-month {
+                        color: #000;
+                        font-weight: 700;
+                        font-size: 12px;
+                    }
+                    .table-value {
+                        color: $blue;
+                        font-weight: 700;
+                        font-size: 20px;
+                    }
+                }
+            }
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+        .car--toyota {
+            background: 300% 50% / 80% no-repeat url("./assets/images/content/daco.png"), #fff;
+        }
+        .car--kia {
+            background: 300% 50% / 80% no-repeat url("./assets/images/content/kia.png"), #fff;
+        }
+        .car--honda {
+            background: 300% 50% / 80% no-repeat url("./assets/images/content/honda.png"), #fff;
+        }
+    }
+    &__advert-section {
+        margin-top: 50px;
+        .advert-section__header {
+            font-size: 36px;
+            font-weight: 500;
+        }
+        .advert-section__selling-cards {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            .selling-card {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
 }
