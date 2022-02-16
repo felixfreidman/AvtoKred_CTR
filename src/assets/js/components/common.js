@@ -1,30 +1,58 @@
+$(document).ready(function() {
+    $("#sliderCredit").slider({
+        range: "min",
+        animate: true,
+        value: 500000,
+        min: 100000,
+        max: 8000000,
+        step: 10000,
+        slide: function slide(event, ui) {
+            var debtValue = ui.value;
+            debtValue = numberWithCommas(debtValue);
+            $("#slideCreditInput").val(debtValue);
+        },
+    });
+    $("#sliderInvest").slider({
+        range: "min",
+        animate: true,
+        value: 0,
+        min: 0,
+        max: 6400000,
+        step: 10000,
+        slide: function slide(event, ui) {
+            var debtValue = ui.value;
+            debtValue = numberWithCommas(debtValue);
+            $("#slideInvestInput").val(debtValue);
+        },
+    });
+    $("#sliderTime").slider({
+        range: "min",
+        animate: true,
+        value: 36,
+        min: 6,
+        max: 96,
+        step: 6,
+        slide: function slide(event, ui) {
+            var debtValue = ui.value;
+            debtValue = numberWithCommas(debtValue);
+            $("#slideTimeInput").val(debtValue);
+        },
+    });
+});
 
-//   $('#btn-menu-mob').click(function(e) {
-//       e.preventDefault();
-//       $('.header__svg-mob').addClass('is-active');
+$("#phone").inputmask();
+$("#phoneUncertain").inputmask(); // Slide Logic
 
-//       $('#menu-mobile').animate({ 
-//         right: '0px' 
-//         }, 300);
-//       $('#menu-mobile').animate({ 
-//         right: '0px' 
-//         }, 300);
-//     $('body').css('overflow', 'hidden');
-//     $('.page').animate({ 
-//         right: '190px' 
-//     }, 200); 
-// });
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
 
-// $('.menu-mobile__svg-close').click(function(e) {
-//     e.preventDefault();
-//     $('.header__svg-mob').removeClass('is-active');
-//     $('#menu-mobile').animate({ 
-//       right: '-207px' 
-//   }, 300);
-//   $('body').css('overflow', 'auto');
-//   $('.page').animate({ 
-//       right: '0px' 
-//   }, 200); 
-// });
-
- 
+$("#slideInvestInput").after(function() {
+    return "<span class ='rubles'>рублей</span>";
+});
+$("#slideCreditInput").after(function() {
+    return "<span class ='rubles'>рублей</span>";
+});
+$("#slideTimeInput").after(function() {
+    return "<span class ='rubles'>месяцев</span>";
+});
