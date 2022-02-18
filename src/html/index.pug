@@ -14,20 +14,20 @@ html(lang="en")
                     .form-header Калькулятор расчета автокредита
                     .form-subheader Укажите необходимую сумму для покупки авто и узнайте ежемесячный платеж
                     label(for="slideCreditInput").form-label Сумма кредита:
-                        input#slideCreditInput(type="text", name="data[Сумма кредита:]", value = "500.000").form-input
+                        input#sliderCreditInput(type="text", name="data[Сумма кредита:]", value = "500.000", data-inputmask="'mask': '+7(999) 999-99-99'").form-input
                         .slider#sliderCredit
-                    label(for="slideInvestInput").form-label Первоначальный взнос:
-                        input#slideInvestInput(type="text", name="data[Сумма кредита:]", value = "0").form-input
+                    label(for="slideInvestInput").form-label.form-label--small Первоначальный взнос:
+                        input#sliderInvestInput(type="text", name="data[Сумма кредита:]", value = "0").form-input
                         .slider#sliderInvest
-                    label(for="slideTimeInput").form-label Срок кредитования:
-                        input#slideTimeInput(type="text", name="data[Сумма кредита:]", value = "36").form-input
+                    label(for="slideTimeInput").form-label.form-label--small Срок кредитования:
+                        input#sliderTimeInput(type="text", name="data[Сумма кредита:]", value = "36").form-input
                         .slider#sliderTime
                     .calculator-container 
-                        .result 
-                            | 21.000 
+                        .result#perMonthResult 
+                            | 16 837 
                             span ₽
                         .caption ежемесячный платеж
-                    button(type="submit").form-submit Все предложения 
+                    button(type="submit").form-submit#submitCalculator Узнать больше 
             .main-area.main-area--gray
                 .main-area__header 
                     | Цены растут в Иркутске, а 
@@ -80,6 +80,30 @@ html(lang="en")
                             .circle.circle--free
                             .selling-card__name Без первого взноса
                 .main-area__aware Не является публичной офертой. Услуга предоставляется ООО Автокредит. Не является кредитной организацией. Автокредит предоставляется банками партнерами: ПАО РОСБАНК, Генеральная лицензия №2272 от 28.01.15 ООО Сетелем Банк лицензии Банка России № 2168 от 27 июня 2013 г. (бессрочные) ПАО «БыстроБанк» Лицензия Банка России №1745 ПАО «РГС Банк» Лицензия ЦБ РФ 3073 КБ"ЛОКО-Банк"(АО) Лицензия Банка России №2707. Полный список банков-парнеров уточняйте у операторов по телефону 8-800-600-25-15
+            .main-form-submit.fromFullToZero 
+                .main-area__layer
+                form.final-submit
+                    .close-form#closeSubmitForm 
+                        span.cross-one 
+                        span.cross-two
+                    .form-header Подайте заявку уже сейчас
+                    label(for="name").final-submit__label ФИО
+                        input#name(type="text", name="name", placeholder="Иванов Иван Иванович", required).final-submit__input
+                    label(for="phone").final-submit__label Номер телефона
+                        input#phone(type="tel", name="phone",data-inputmask="'mask': '+7(999) 999-99-99'", required).final-submit__input
+                    label(for="citizenLabelUncertain").container 
+                        .agreement-label 
+                            | Я являюсь гражданином РФ
+                        input#citizenLabelUncertain(type="checkbox", name="agreementLabel", required).form-checkbox
+                        span.checkmark 
+                    label(for="agreementLabelUncertain").container 
+                        .agreement-label 
+                            | Я соглашаюсь с 
+                            a(href="https://avtokred.com/privacy", target="_blank").agreement-label__link условиями 
+                            |  и даю свое согласие на обработку и использование персональных данных
+                        input#agreementLabelUncertain(type="checkbox", name="agreementLabel", checked, required).form-checkbox
+                        span.checkmark
+                    button(type="submit").final-submit__submit Подать заявку
         script(src="./assets/js/jquery.min.js") 
         script(src="//code.jquery.com/ui/1.12.1/jquery-ui.js") 
         script(src="./assets/js/plugins.min.js") 

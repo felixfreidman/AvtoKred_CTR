@@ -32,7 +32,7 @@ body {
         background-color: $lightGray;
     }
     &__header {
-        font-size: 50px;
+        font-size: 45px;
         font-weight: 700;
         letter-spacing: 1px;
         line-height: 58px;
@@ -89,7 +89,7 @@ body {
                         font-size: 12px;
                     }
                     .table-value {
-                        color: $blue;
+                        color: $red;
                         font-weight: 700;
                         font-size: 20px;
                     }
@@ -97,6 +97,7 @@ body {
             }
             &:hover {
                 transform: scale(1.05);
+                box-shadow: 0 0 10px rgba($color: $blue, $alpha: 0.5);
             }
         }
         .car--toyota {
@@ -133,6 +134,7 @@ body {
                     transition: all 0.3s ease;
                     &:hover {
                         transform: scale(1.2);
+                        box-shadow: 0 0 20px rgba($color: $blue, $alpha: 0.5);
                     }
                 }
                 .selling-card__name {
@@ -191,12 +193,15 @@ body {
             display: flex;
             flex-direction: column;
             align-items: start;
-            font-size: 12px;
-            color: #8d8c8c;
+            font-size: 16px;
+            color: $blue;
             font-weight: 500;
             width: 100%;
             margin-top: 30px;
             position: relative;
+            &--small {
+                font-size: 12px;
+            }
         }
         .form-input {
             padding: 15px 10px;
@@ -205,24 +210,28 @@ body {
             border: 3px solid #f2f2f2;
             margin-top: 5px;
             outline: none;
-            color: $blue;
+            color: #8d8c8c;
             font-weight: 600;
             font-size: 18px;
             position: relative;
+            cursor: context-menu;
+            transition: all 0.3s ease;
+            &:hover {
+                box-shadow: 0 0 10px rgba($color: $blue, $alpha: 0.5);
+            }
         }
         .rubles {
             display: block;
-            width: 40px;
-            height: 10px;
             position: absolute;
-            right: 40px;
-            top: 8px;
+            right: 5px;
+            top: 50%;
             bottom: 0;
             margin-top: auto;
             margin-bottom: auto;
             color: #8d8c8c;
             font-size: 18px;
             text-align: right;
+            font-weight: 700;
         }
         .ui-slider {
             height: 3px;
@@ -251,6 +260,13 @@ body {
             border: 3px solid $blue;
             outline: none;
             top: -0.5em;
+            cursor: grab;
+        }
+        .ui-state-focus {
+            cursor: grab !important;
+        }
+        .ui-state-focus.ui-state-active {
+            cursor: grabbing !important;
         }
         .calculator-container {
             display: flex;
@@ -263,11 +279,14 @@ body {
                 color: #000;
                 font-weight: 700;
                 display: flex;
+                align-items: flex-end;
+                line-height: 34px;
                 width: 75%;
                 span {
-                    color: #8d8c8c;
+                    color: #000;
                     display: block;
-                    margin-left: 10px;
+                    font-size: 17px;
+                    line-height: 22px;
                 }
             }
             .caption {
@@ -287,6 +306,455 @@ body {
             border: none;
             outline: none;
             border-radius: 22px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover {
+                box-shadow: 0 0 20px rgba($color: $blue, $alpha: 0.5);
+                transform: scale(1.05);
+            }
         }
+    }
+    &__layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba($color: #000, $alpha: 0.5);
+        z-index: 100;
+    }
+}
+
+.main-form-submit {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 120;
+    .form-header {
+        font-size: 22px;
+        font-weight: 700;
+        color: $darkBlue;
+        margin-bottom: 10px;
+        line-height: 26px;
+    }
+    .final-submit {
+        width: calc(40% - 80px);
+        height: calc(80% - 80px);
+        background-color: #fff;
+        border-radius: 40px;
+        z-index: 140;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+        position: relative;
+        .close-form {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            &:hover {
+                .cross-one {
+                    background-color: $blue;
+                }
+                .cross-two {
+                    background-color: $blue;
+                }
+            }
+            .cross-one {
+                transform: rotate(45deg);
+                display: block;
+                height: 3px;
+                width: 30px;
+                background-color: #3d3d3d;
+                position: absolute;
+                transition: all 0.3s ease;
+            }
+            .cross-two {
+                transform: rotate(-45deg);
+                display: block;
+                height: 3px;
+                width: 30px;
+                background-color: #3d3d3d;
+                position: absolute;
+                transition: all 0.3s ease;
+            }
+        }
+        &__label {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            font-size: 16px;
+            color: $blue;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 30px;
+            position: relative;
+        }
+        &__input {
+            padding: 15px 10px;
+            width: calc(100% - 20px);
+            border-radius: 8px;
+            border: 3px solid #f2f2f2;
+            margin-top: 15px;
+            outline: none;
+            color: #636262;
+            font-weight: 600;
+            font-size: 18px;
+            position: relative;
+            cursor: context-menu;
+            transition: all 0.3s ease;
+            &:hover {
+                box-shadow: 0 0 10px rgba($color: $blue, $alpha: 0.5);
+            }
+        }
+        &__submit {
+            background-color: $blue;
+            padding: 20px;
+            width: calc(100%);
+            margin-top: 40px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 22px;
+            border: none;
+            outline: none;
+            border-radius: 22px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover {
+                box-shadow: 0 0 20px rgba($color: $blue, $alpha: 0.5);
+                transform: scale(1.05);
+            }
+        }
+        .container {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            width: 90%;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            .agreement-label {
+                font-size: 16px;
+                font-weight: 400;
+                color: #0b1f35;
+                margin-left: 20px;
+                line-height: 22px;
+                a {
+                    display: inline-block;
+                    font-size: 16px;
+                    font-weight: 500;
+                    text-decoration: underline;
+                    color: $blue;
+                }
+            }
+        }
+        .container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        .checkmark {
+            position: absolute;
+            top: -5px;
+            bottom: 0;
+            margin-top: auto;
+            margin-bottom: auto;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
+            background-color: #eee;
+        }
+        .container:hover input~.checkmark {
+            background-color: #ccc;
+        }
+        .container input:checked~.checkmark {
+            background-color: $blue;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .container input:checked~.checkmark:after {
+            display: block;
+        }
+        .container .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+        .input-warning {
+            border-bottom: 1px solid #B20A2C !important;
+            color: #B20A2C;
+            font-weight: 600;
+        }
+    }
+}
+
+.fromFullToZero {
+    animation: fromFullToZero 0.3s ease !important;
+    display: none;
+}
+
+@keyframes fromFullToZero {
+    0% {
+        opacity: 1;
+        display: flex;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fromZeroToFull {
+    animation: fromZeroToFull 0.3s ease !important;
+    display: flex;
+}
+
+@keyframes fromZeroToFull {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        display: flex;
+    }
+}
+
+// ============== MOBILE SECTION
+@media (max-width: 1250px) {
+    .main-area__header {
+        font-size: 36px;
+        line-height: 38px;
+    }
+    .main-area__advert-section .advert-section__selling-cards .selling-card .selling-card__name {
+        font-size: 14px;
+    }
+    .main-area__calculator {
+        width: 270px;
+    }
+    .main-area__advert-section .advert-section__header {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 1150px) {
+    .main-area__calculator {
+        right: -180px;
+    }
+    .main-area--gray {
+        width: calc(80% - 75px);
+        height: calc(100% - 200px);
+        padding: 100px 25px 100px 200px;
+    }
+    .main-area__car-container .car-container__card .card-container .table-row .table-value {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .main {
+        height: fit-content;
+        max-height: 1000vh;
+        flex-direction: column-reverse;
+    }
+    .main-area--red {
+        height: 100vh;
+        width: 100vw;
+    }
+    .main-area__calculator {
+        width: 60%;
+        right: 0;
+        left: 0;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .main-area--gray {
+        width: calc(100% - 200px);
+        height: calc(80% - 200px);
+        padding: 100px;
+    }
+    .main-area__calculator .form-header {
+        font-size: 30px;
+        line-height: 32px;
+    }
+    .main-area__calculator .form-subheader {
+        font-size: 22px;
+        line-height: 25px;
+    }
+    .main-area__calculator .form-label {
+        font-size: 22px !important;
+    }
+    .main-area__calculator .calculator-container .caption {
+        font-size: 22px;
+    }
+    .main-area__calculator .ui-slider-handle {
+        top: -0.3em;
+    }
+    .main-form-submit .final-submit {
+        width: calc(60% - 80px);
+    }
+}
+
+@media (max-width: 870px) {
+    .main-area__calculator {
+        width: 80%;
+    }
+    .main-area--gray {
+        width: calc(100% - 100px);
+        height: calc(80% - 200px);
+        padding: 100px 50px;
+    }
+}
+
+@media (max-width: 750px) {
+    .main-area--gray {
+        width: calc(100% - 50px);
+        height: calc(80% - 100px);
+        padding: 50px 25px;
+    }
+    .car--honda {
+        display: none;
+    }
+    .main-area__car-container .car-container__card {
+        width: calc(48% - 40px);
+    }
+    .main-form-submit .final-submit {
+        width: calc(90% - 80px);
+    }
+    .main-area__calculator {
+        height: calc(90% - 80px);
+        justify-content: space-between;
+    }
+    .main-area__header {
+        font-size: 32px;
+    }
+    .main-area__advert-section .advert-section__selling-cards .selling-card .selling-card__name {
+        font-size: 12px;
+    }
+    .main-area__advert-section .advert-section__header {
+        font-size: 26px;
+    }
+    .main-area__aware {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 550px) {
+    .main-area__aware {
+        line-height: 14px;
+    }
+    .main-area__calculator .form-subheader {
+        font-size: 16px;
+        line-height: 18px;
+    }
+    .main-area__header {
+        font-size: 24px;
+        line-height: 26px;
+    }
+    .car--kia {
+        display: none;
+    }
+    .main-area__car-container .car-container__card {
+        width: calc(100% - 40px);
+    }
+    .main-area__car-container .car-container__card .card-container .card-header {
+        font-size: 24px;
+    }
+    .main-area__car-container .car-container__card .card-container .table-row .table-month {
+        font-size: 16px;
+    }
+    .main-area__car-container .car-container__card .card-container .table-row .table-value {
+        font-size: 22px;
+    }
+    .main-area__car-container .car-container__card .card-container .card-subheader {
+        font-size: 15px;
+    }
+    .main-area__advert-section .advert-section__selling-cards .selling-card {
+        width: 48%;
+    }
+    .main-area__advert-section .advert-section__selling-cards .selling-card:last-child {
+        display: none;
+    }
+    .main-area__advert-section .advert-section__selling-cards .selling-card .circle {
+        min-width: 50px;
+        min-height: 50px;
+    }
+    .main-area__advert-section .advert-section__header {
+        font-size: 18px;
+        line-height: 19px;
+    }
+    .main-form-submit .final-submit .container .agreement-label {
+        font-size: 13px;
+        line-height: 14px;
+        a {
+            font-size: 13px;
+            line-height: 14px;
+        }
+    }
+}
+
+@media (max-width: 350px) {
+    .main-area__calculator .calculator-container .result {
+        font-size: 22px;
+        line-height: 22px;
+    }
+    .main-area__calculator {
+        padding: 40px 20px;
+        width: calc(100% - 40px);
+    }
+    .main-area__calculator .form-header {
+        font-size: 23px;
+        line-height: 25px;
+    }
+    .main-area__calculator .form-subheader {
+        font-size: 13px;
+        line-height: 15px;
+    }
+    .main-area__header {
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .main-area__advert-section .advert-section__selling-cards .selling-card .selling-card__name {
+        font-size: 8px;
+    }
+    .main-form-submit .final-submit .container .agreement-label {
+        font-size: 10px;
+        line-height: 12px;
+        a {
+            font-size: 10px;
+            line-height: 12px;
+        }
+    }
+    .main-form-submit .final-submit__submit {
+        font-size: 18px;
     }
 }
